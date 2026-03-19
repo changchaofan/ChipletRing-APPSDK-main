@@ -1,0 +1,3 @@
+rootProject.name='SDKDemo'
+include ':app'
+include ':st25.android.reader.interface'

@@ -278,7 +278,9 @@ IOS/library/BCLRingSDK_New/iOS_New_Framework_1.1.19/BCLRingSDK.xcframework/ios-a
 IOS/library/BCLRingSDK_New/iOS_New_Framework_1.1.19/BCLRingSDK.xcframework/ios-arm64_x86_64-simulator/BCLRingSDK.framework/PrivacyInfo.xcprivacy
 Android/example/ringDemo/.idea/misc.xml
 /Android/example/ringDemo/.idea
-/Android
-/Android/example/ringDemo/.idea
 Android/example/ringDemo/local.properties
-/Android/example/ringDemo/.idea
+Android/artifacts/
+Android/**/*.class
+Android/**/*.jks
+Android/**/build/
+Android/**/.gradle/

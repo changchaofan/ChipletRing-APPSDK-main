@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+    </style>
+    <!-- 背景全透明无边框s -->
+    <style name="style_loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="toolbar_theme" parent="@style/Base.Widget.AppCompat.ActionBar">
+        <item name="colorControlNormal">#ff000000</item>
+        <item name="android:actionBarSize">46dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetLeft">0dp</item>
+        <item name="contentInsetRight">0dp</item>
+        <item name="actionMenuTextColor">#ff000000</item> <!--颜色-->
+    </style>
+    <declare-styleable name="Chart_type">
+        <attr name="chartType" format="enum">
+            <enum name="heart_main" value="0" />
+            <enum name="heart_day" value="1" />
+            <enum name="heart_week" value="2" />
+            <enum name="heart_month" value="3" />
+            <enum name="stress_main" value="4" />
+            <enum name="step_main" value="5" />
+            <enum name="blood_day" value="6" />
+            <enum name="blood_week" value="7" />
+            <enum name="blood_month" value="8" />
+            <enum name="sleep_day" value="9" />
+            <enum name="sleep_week" value="10" />
+            <enum name="sleep_month" value="11" />
+            <enum name="temp_day" value="12" />
+            <enum name="temp_week" value="13" />
+            <enum name="temp_month" value="14" />
+            <enum name="stress_day" value="15" />
+            <enum name="stress_week" value="16" />
+            <enum name="stress_month" value="17" />
+            <enum name="sleep_main" value="18" />
+            <enum name="sport_day" value="19" />
+            <enum name="sport_week" value="20" />
+            <enum name="sport_month" value="21" />
+            <enum name="pie" value="22" />
+            <enum name="sport_his" value="23" />
+            <enum name="heart_altered" value="24" />
+            <enum name="altered_day" value="25" />
+            <enum name="altered_week" value="26" />
+            <enum name="altered_month" value="27" />
+            <enum name="menses" value="28" />
+            <enum name="menses_cycle" value="29" />
+        </attr>
+    </declare-styleable>
+
+</resources>

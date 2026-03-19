@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_audio"
+    android:fillViewport="true"
+    tools:context=".activity.TestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_panel_surface"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="18dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ring Audio Lab"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="录音结束后自动把 WAV 文件分别发给 OpenAI 与 Gemini 做语音转文字。"
+                    android:textColor="#5B6472"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg_state"
+                android:paddingLeft="18dp"
+                android:paddingTop="10dp"
+                android:paddingRight="18dp"
+                android:paddingBottom="10dp"
+                android:text="重连设备"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_panel_surface"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="录音与提交"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_audio_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="等待开始录音"
+                android:textColor="#1B1D25"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_audio_path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="暂无音频文件"
+                android:textColor="#667085"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_start_audio"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_state"
+                    android:text="开始录音"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/bt_stop_audio"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_state"
+                    android:text="停止并转写"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/bt_play_skip1_audio"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_state"
+                    android:text="试听音频"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/bt_transcribe_latest"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bg_state"
+                    android:text="重新转写"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="语音转写结果"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_panel_surface"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OpenAI"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_openai_transcript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:minHeight="96dp"
+                android:text="等待录音"
+                android:textColor="#374151"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_panel_surface"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gemini"
+                android:textColor="#111827"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_gemini_transcript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:minHeight="96dp"
+                android:text="等待录音"
+                android:textColor="#374151"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_panel_surface"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运行日志"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="12dp"
+                android:background="#EEF3F8"
+                android:gravity="top|start"
+                android:padding="12dp"
+                android:scrollbars="vertical"
+                android:text="日志输出区"
+                android:textColor="#27313E"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_panel_surface"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设备调试入口"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="保留原调试按钮，方便继续联调手环能力。"
+                android:textColor="#5B6472"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <Button android:id="@+id/bt_sys_control" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="蓝牙信号" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_sync_time" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="同步时间" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_read_time" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="读取时间" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_battery" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="获取电量" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_version" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="版本信息" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_step" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="获取步数" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_clear_step" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="清空步数" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_calculate_deplete" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="计算消耗" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_collection" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="设置采集" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_get_collection" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="获取采集" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_set_file" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="设置文件" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_start_update" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="开始升级" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_set_BlueTooth_Name" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="蓝牙名称" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_clean_history" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="清历史" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_delete_data" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="删本地库" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_heart" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="心率" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_stop_heart" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="停心率" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_blood_oxygen" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="血氧" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_blood_stress" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="血压" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_read_log" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="读历史" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_timeline" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="Timeline" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_start_play" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="开始游戏" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_stop_play" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="结束游戏" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_jump_pressure" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="历史血压" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_start_6_zhou" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="开 6 轴" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_stop_6_zhou" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="停 6 轴" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_jump_pageFile" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="文件系统" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_jump_pageCollection" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="采集页" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_jump_goMore" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_marginRight="8dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="GoMore" android:textAllCaps="false" android:textColor="@color/white" />
+                <Button android:id="@+id/bt_jump_historyTemp" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="历史温度" android:textAllCaps="false" android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                <Button android:id="@+id/bt_jump_page2" style="@style/Widget.AppCompat.Button.Small" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:background="@drawable/button_bg_state" android:text="页面 2" android:textAllCaps="false" android:textColor="@color/white" />
+                <View android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" />
+                <View android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
